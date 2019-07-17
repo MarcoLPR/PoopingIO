@@ -2,9 +2,9 @@
 {
     public class Bathroom
     {
-        public int Id;
-        public string Name;
-        public int Genre;
-        public int OpenSpaces;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Genre { get; set; }
+        public int OpenSpaces { get; set; }
     }
 }
