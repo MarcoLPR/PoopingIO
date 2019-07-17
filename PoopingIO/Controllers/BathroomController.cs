@@ -30,8 +30,8 @@ namespace PoopingIO.Controllers
             var content = new ResponseDTO();
             if (request.Event.Type == "app_mention")
             {
-                content.Token = _options.SlackBotToken;
-                content.Channel = request.Event.User;
+                content.Token = request.Token;
+                content.Channel = "#poopingio";
                 content.As_User = true;
                 if (request.Event.Text.Contains("hombre"))
                 {
