@@ -19,20 +19,9 @@ namespace PoopingIO.Models
             get { return _bathroomManager; }
         }
 
-        public Bathroom Piso7AmericasHombres = new Bathroom
-        {
-            Id = 1,
-            Name = "Piso 7 Hombres",
-            Genre = 1,
-            OpenSpaces = 2,
-        };
-
-        public Bathroom Piso7AmericasMujeres = new Bathroom
-        {
-            Id = 2,
-            Name = "Piso 7 Mujeres",
-            Genre = 2,
-            OpenSpaces = 3,
+        public Bathroom[] bathrooms = new Bathroom[] {
+                new Bathroom { Id = 1, Name = "Piso 7 - Hombres", Genre = 1, OpenSpaces = 2 },
+                new Bathroom { Id = 2, Name = "Piso 7 - Mujeres", Genre = 2, OpenSpaces = 3 }
         };
     }
 }

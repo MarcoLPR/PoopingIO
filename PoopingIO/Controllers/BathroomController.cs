@@ -30,15 +30,44 @@ namespace PoopingIO.Controllers
             var content = new ResponseDTO();
             if (request.Event.Type == "app_mention")
             {
-                content.Token = request.Token;
-                content.Channel = "#poopingio";
-                content.As_User = true;
+                content.token = _options.SlackBotToken;
+                content.channel = "#general";
+                content.as_user = true;
                 if (request.Event.Text.Contains("hombre"))
                 {
-                    content.Text = $"En el baño {_manager.Piso7AmericasHombres.Name} hay {_manager.Piso7AmericasHombres.OpenSpaces} disponibles.";
-                    JsonClient.Post(_options.SlackUrl, content, $"{_options.SlackBotToken}");
+                    content.text = $"En el baño {_manager.bathrooms[0].Name} hay {_manager.bathrooms[0].OpenSpaces} disponibles. ¡Suerte!";
+
+                    JsonClient.Post(_options.SlackUrl, content, _options.SlackBotToken);
+                }
+                if (request.Event.Text.Contains("mujer"))
+                {
+                    content.text = $"En el baño {_manager.bathrooms[1].Name} hay {_manager.bathrooms[1].OpenSpaces} disponibles. ¡Suerte!";
+
+                    JsonClient.Post(_options.SlackUrl, content, _options.SlackBotToken);
+                }
+                if (request.Event.Text.Contains("todo"))
+                {
+                    content.text = $"En el baño {_manager.bathrooms[1].Name} hay {_manager.bathrooms[1].OpenSpaces} disponibles.\r\nEn el baño {_manager.bathrooms[0].Name} hay {_manager.bathrooms[0].OpenSpaces} disponibles.";
+
+                    JsonClient.Post(_options.SlackUrl, content, _options.SlackBotToken);
                 }
             }
+        }
+
+        [HttpGet]
+        [Route("update/{id}/{spaces}")]
+        public void UpdateA(int id, int spaces)
+        {
+            var bathroom = _manager.bathrooms.FirstOrDefault(x => x.Id == id);
+            bathroom.OpenSpaces = spaces;
+        }
+
+        [HttpPost]
+        [Route("update/{id}/{spaces}")]
+        public void UpdateB(int id, int spaces)
+        {
+            var bathroom = _manager.bathrooms.FirstOrDefault(x => x.Id == id);
+            bathroom.OpenSpaces = spaces;
         }
     }
 }
