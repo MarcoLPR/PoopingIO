@@ -8,6 +8,6 @@ namespace PoopingIO.Models
     public class AppSettings
     {
         public string SlackUrl { get; set; } = "https://slack.com/api/chat.postMessage";
-        public string SlackBotToken { get; set; } = "xoxb-103199614660-691453304065-5IbUemk9M9fKg4qM4WZKULwY";
+        public string SlackBotToken { get; set; } = "xoxb-687329265779-700818904423-SGwpMX40hq87fTVaf0zfZEJD";
     }
 }
