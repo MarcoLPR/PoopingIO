@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Unosquare.RaspberryIO;
 using Unosquare.RaspberryIO.Abstractions;
 using Unosquare.RaspberryIO.Peripherals;
 using Unosquare.Swan;
 using Unosquare.Swan.Networking;
+
 
 namespace PoopingIO
 {
@@ -36,6 +36,7 @@ namespace PoopingIO
 
         static void Main(string[] args)
         {
+           // Pi.Init<BootstrapWiringPi>();
 
             InitialSync();
 
@@ -85,7 +86,7 @@ namespace PoopingIO
 
             Console.ReadKey();
         }
-
+    
         static void InitialSync()
         {
             var mbavailable = mDoorsState.Where(x => x.Value == true).ToArray().Length;
